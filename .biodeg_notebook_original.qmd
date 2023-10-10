@@ -1,0 +1,149 @@
+---
+title: "Biodégration de molécules chimiques"
+author: "___"
+date: "`r Sys.Date()`"
+format:
+  html:
+    code-fold: true
+    code-tools: true
+    toc: true
+editor: visual
+lang: fr
+bibliography: references.bib
+---
+
+<!--# Cette balise est un commentaire. Ce document est un carnet de notes. C'est l'équivalent d'un cahier de laboratoire pour vos analyses de données. Vous allez y consigner toutes les analyses que vous avez réalisées et leurs interprétations dans l'ordre de votre progression. Il se différencie des documents de présentation des résultats (rapport, présentation avec dias, article scientifique, ouvrage plus conséquent) par son style bref et informel. Dans les documents de présentation, les résultats les plus pertinents sont choisis alors que le carnet de notes reprend tout ce qui a été fait pour garder une trace du raisonnement complet qui a mené à l'analyse. Un carnet de notes commence toujours pour une brève introduction de quelques lignes qui présente le sujet étudié. -->
+
+<!--% Cette balise est une consigne. Remplacez author: "___" par votre nom dans l'entête YAML. Votre nom n'est pas votre login Github. -->
+
+## Introduction et but
+
+L'Union européenne a mis en place le règlement [REACH](https://echa.europa.eu/fr/regulations/reach/understanding-reach) ([REACH Regulation](https://environment.ec.europa.eu/topics/chemicals/reach-regulation_fr), the *Regulation on the registration, evaluation, authorisation and restriction of chemicals*) qui étudie et établit des procédures liées à des substances chimiques afin de protéger la santé humaine et l'environnement. Sur demande l'UE, des scientifiques ont mis en place le modèle QSAR (*quantitative structure--activity relationship (QSAR) models*) afin de prédire la capacité de dégradation des molécules.
+
+Dans le cadre de ce projet, un classifieur basé sur l'analyse discriminante linéaire est créé, testé et évalué avant de potentiellement le déployer. Ce classifieur doit être capable de discriminer les molécules chimiques non biodégradables.
+
+## Matériel et méthodes
+
+Les données sont rendues disponibles sous licence CC BY 4.0 via UC Irvine Machine Learning Repository [@kamelmansouri2013] qui fournit les données et les métadonnées. Ces données ont été employées dans le cadre de la recherche de @mansouri2013 .
+
+L'analyse est réalisée avec la [SciViews Box 2023](https://www.sciviews.org/software/svbox/) dans [Saturn Cloud](https://saturncloud.io) (Linux) avec le [logiciel R](https://www.r-project.org) (`r R.version.string`).
+
+## Analyses
+
+```{r setup, include=FALSE}
+# Nécessaire pour les tests SDD, ne pas utiliser dans un "vrai" projet
+if (!"tools:tests" %in% search())
+  source(here::here("tests/tools_tests.R"), attach(NULL, name = "tools:tests"))
+
+# Configuration de l'environnement
+SciViews::R("ml", lang = "fr")
+```
+
+<!--% Importez les données `biodegradation.rds` présentes dans le dossier `data`. Assurez-vous que chaque variable soit dans un format correct..-->
+
+```{r import, record='RODFS', object='biodeg'}
+biodeg <- read(___)
+```
+
+### Description des données
+
+<!--% Employez la fonction skim() du package {skimr} afin d'obtenir un résumé de l'objet `biodeg`.-->
+
+```{r skim}
+___
+```
+
+<!--% Décrivez les données en cochant les phrases correctes. -->
+
+```{r skimcomment, output='asis'}
+select_answer(r"-{
+[] -   Le tableau dédié à l'entrainement et au test du classifieur comprend 1055 items et 42 attributs.
+[] -   Le tableau dédié à l'entrainement et au test du classifieur comprend 1055 attributs et 42 items.
+[] -   L'ensemble des variables sont quantitatives.
+[] -   L'ensemble des variables sont qualitatives.
+[] -   Une variable est qualitative et les autres quantitatives.
+[] -   Une variable est quatitative et les autres qualitatives.
+[] -   On dénombre 356 molécules biodégradables et 699 non biodégradables.
+[] -   On dénombre 699 molécules biodégradables et 356 non biodégradables.
+[] -   La majorité des distributions des variables numériques sont unimodales et asymétriques.
+[] -   La majorité des distributions des variables numériques sont unimodales et symétriques.
+[] -   La majorité des distributions des variables numériques sont bimodales et symétriques.
+[] -   La majorité des distributions des variables numériques sont multimodales et symétriques.}-")
+
+```
+
+### Set d'apprentissage et de test
+
+<!--% Divisez ce jeu de donnée en un set d'apprentissage (`biodeg_learn`) et en un set de test (`biodeg_test`). Utilisez 8/10 des observations pour votre set d'apprentissage.-->
+
+```{r split}
+set.seed(347890)
+biodeg_init <- ___
+biodeg_learn <- ___
+biodeg_test <- ___
+```
+
+### Apprentissage et test du modèle
+
+<!--% Créez un modèle prédisant la classe des molécules chimiques grâce à l'analyse discriminante linéaire. Nommez ce modèle `bio_lda`. -->
+
+```{r model, record='ROP', object='bio_lda', arg='counts'}
+bio_lda <- ___
+```
+
+<!--% Décrivez le classifieur ci-dessus en cochant les phrases correctes. -->
+
+```{r modelcomment, output='asis'}
+select_answer(r"-{
+[] -   Le classifieur est entrainé sur 2/10 des observations.
+[] -   Le classifieur est entrainé sur 8/10 des observations.
+[] -   Le classifieur est entrainé sur l'ensemble des observations.
+[] -   La variable class est prédite sur base des 42 variables du jeu de données.
+[] -   La variable class est prédite sur base des 41 variables du jeu de données.
+[] -   La variable class est prédite sur base des 8/10 variables du jeu de données.
+[] -   Les deux classes étudiées sont équilibrées. On retrouve autant de molécules dégradables que non dégradables dans le set d'apprentissage.
+[] -   Les molécules dégradables sont plus abondantes que les molécules non dégradables dans le set d'apprentissage.
+[] -   Les molécules dégradables sont moins abondantes que les molécules non dégradables dans le set d'apprentissage.}-")
+```
+
+<!--% Étudiez les performances du classifieur à l'aide d'une matrice de confusion nommée `biodeg_conf`. Calculez les métriques de performance..-->
+
+```{r confusion}
+# Matrice de confusion
+biodeg_conf <- ___
+# Graphique associé à la matrice
+___
+# Métriques de performance
+___
+```
+
+<!--% Décrivez la matrice de confusion et les métriques de performance associées ci-dessus en cochant les phrases correctes. -->
+
+```{r confusioncomment, output='asis'}
+select_answer(r"-{
+[] -   Le classifieur détecte 57 vrais positifs pour les molécules non dégradables.
+[] -   Le classifieur détecte 57 faux positifs pour les molécules non dégradables.
+[] -   Le classifieur détecte 57 vrais négatifs pour les molécules non dégradables.
+[] -   Le classifieur détecte 57 faux négatifs pour les molécules non dégradables.
+[] -   Le taux d'erreur global est de 14.6% sur 212 items testés.
+[] -   Le taux d'erreur global est de 12.3% sur 843 items testés.
+[] -   Le taux d'erreur global est de 12.8% sur 1055 items testés.
+[] -   Le classifieur est plus précis pour détecter les molécules non dégradables.
+[] -   Le classifieur est plus précis pour détecter les molécules dégradables.
+[] -   Le classifieur est aussi précis dans la détection des molécules dégradables que non dégradables
+[] -   Le classifieur trouve 79% des molécules dégradables parmi l'ensemble des molécules du set de test.
+[] -   Le classifieur trouve 79% des molécules dégradables parmi l'ensemble des molécules dégradables du set de test.
+[] -   Le classifieur trouve 79% des molécules dégradables parmi l'ensemble des molécules non dégradables du set de test.}-")
+```
+
+## Conclusion
+
+<!--% Conseilleriez-vous l'utilisation de ce classifieur. Proposez 3 éléments en faveur ou non de ce classifieur. -->
+
+-   ...
+
+-   ...
+
+-   ...
+
+## Bibliographie
