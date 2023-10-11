@@ -53,7 +53,7 @@ test_that("La structure du document est-elle conservée ?", {
 test_that("L'entête YAML a-t-il été complété ?", {
   expect_true(biodeg[[1]]$author != "___")
   expect_true(!grepl("__", biodeg[[1]]$author))
-  expect_true(grepl("^[^_]....+", urchi[[1]]$author))
+  expect_true(grepl("^[^_]....+", biodeg[[1]]$author))
   # Le nom d'auteur n'est pas complété ou de manière incorrecte dans l'entête
   # Vous devez indiquer votre nom dans l'entête YAML à la place de "___" et
   # éliminer les caractères '_' par la même occasion.
@@ -90,13 +90,15 @@ test_that("Chunk 'skim' & 'skimcomment' : description des données", {
 })
 
 test_that("Chunks 'split' : définition du set d'apprentissage et du set de test", {
-  #expect_true(is_identical_to_ref("split"))
-  # L'objet 'biodeg_init' n'est pas trouvé ou n'est pas celui attendu.
+  expect_true(is_identical_to_ref("split"))
+  # L'objet 'biodeg_train' n'est pas trouvé ou n'est pas celui attendu.
   # Avez-vous bien respecté la division de 8/10 pour séparer vos deux sets ?
+  # Avez-vous exécuté les différents chunks et les instructions dans le bon
+  # ordre ?
 })
 
 test_that("Chunks 'model' & 'modelcomment' : création du classifieur", {
-  #expect_true(is_identical_to_ref("model"))
+  expect_true(is_identical_to_ref("model"))
   # L'objet 'bio_lda' n'est pas trouvé ou n'est pas celui attendu
   # Avez-vous bien entraîné votre classifieur avec les données d'apprentissage ?
 
@@ -110,7 +112,7 @@ test_that("Chunks 'model' & 'modelcomment' : création du classifieur", {
 })
 
 test_that("Chunks 'confusion' & 'confusioncomment' : matrice de confusion et métriques de performances", {
-  #expect_true(is_identical_to_ref("confusion"))
+  expect_true(is_identical_to_ref("confusion"))
   # La matrice de confusion n'est pas trouvée ou n'est pas celle attendue.
   # Vérifiez que la matrice de confusion est effectivement calculée avec les
   # données de test.

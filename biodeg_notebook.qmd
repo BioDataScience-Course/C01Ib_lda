@@ -78,9 +78,11 @@ select_answer(r"-{
 
 ### Set d'apprentissage et de test
 
+Nous utilisons les 8/10 des données pour l'apprentissage et 2/10 pour le test.
+
 <!--% Divisez ce jeu de donnée en un set d'apprentissage (`biodeg_learn`) et en un set de test (`biodeg_test`). Utilisez 8/10 des observations pour votre set d'apprentissage.-->
 
-```{r split}
+```{r split, record='RODFS', object='biodeg_train'}
 set.seed(347890)
 biodeg_init <- ___
 biodeg_train <- ___
@@ -114,7 +116,7 @@ select_answer(r"-{
 
 <!--% Étudiez les performances du classifieur à l'aide d'une matrice de confusion nommée `biodeg_conf`. Calculez les métriques de performance. -->
 
-```{r confusion}
+```{r confusion, record='ROA', object='biodeg_conf', arg='class,row.freqs,col.freqs,prior,stats'}
 # Matrice de confusion
 biodeg_conf <- ___
 # Graphique de la matrice de confusion
@@ -127,19 +129,19 @@ ___
 
 ```{r confusioncomment, output='asis'}
 select_answer(r"-{
-[] -   Le classifieur détecte 57 vrais positifs pour les molécules non dégradables.
-[] -   Le classifieur détecte 57 faux positifs pour les molécules non dégradables.
-[] -   Le classifieur détecte 57 vrais négatifs pour les molécules non dégradables.
-[] -   Le classifieur détecte 57 faux négatifs pour les molécules non dégradables.
-[] -   Le taux d'erreur global est de 14.6% sur 212 items testés.
-[] -   Le taux d'erreur global est de 12.3% sur 843 items testés.
-[] -   Le taux d'erreur global est de 12.8% sur 1055 items testés.
+[] -   Le classifieur détecte 55 vrais positifs pour les molécules non dégradables.
+[] -   Le classifieur détecte 55 faux positifs pour les molécules non dégradables.
+[] -   Le classifieur détecte 55 vrais négatifs pour les molécules non dégradables.
+[] -   Le classifieur détecte 55 faux négatifs pour les molécules non dégradables.
+[] -   Le taux d'erreur global est de 10.9% sur 211 items testés.
+[] -   Le taux d'erreur global est de 10.9% sur 843 items testés.
+[] -   Le taux d'erreur global est de 10.9% sur 1055 items testés.
 [] -   Le classifieur est plus précis pour détecter les molécules non dégradables.
 [] -   Le classifieur est plus précis pour détecter les molécules dégradables.
 [] -   Le classifieur est aussi précis dans la détection des molécules dégradables que non dégradables.
-[] -   Le classifieur trouve 79% des molécules dégradables parmi l'ensemble des molécules du set de test.
-[] -   Le classifieur trouve 79% des molécules dégradables parmi l'ensemble des molécules dégradables du set de test.
-[] -   Le classifieur trouve 79% des molécules dégradables parmi l'ensemble des molécules non dégradables du set de test.}-")
+[] -   Le classifieur trouve 81% des molécules dégradables parmi l'ensemble des molécules du set de test.
+[] -   Le classifieur trouve 81% des molécules dégradables parmi l'ensemble des molécules dégradables du set de test.
+[] -   Le classifieur trouve 81% des molécules dégradables parmi l'ensemble des molécules non dégradables du set de test.}-")
 ```
 
 ## Conclusion
