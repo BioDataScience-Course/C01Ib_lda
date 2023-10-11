@@ -1,4 +1,4 @@
-# SDD 3 : Discrimination de molécules biodégradables
+# Discrimination de molécules biodégradables
 
 ## Avant-propos
 
@@ -6,11 +6,11 @@ Ce projet nécessite d'avoir assimilé l'ensemble des notions du premier module 
 
 ## Objectifs
 
-Ce projet est un projet individuel **court**, **cadré**. Vous devrez :
+Ce projet est un projet individuel **court** et **cadré**. Vous devrez :
 
--   créer un classifieur
--   tester ce classifieur
--   décrire le classifieur grâce aux métriques de performance
+-   Créer un classifieur
+-   Tester ce classifieur
+-   Utiliser les métriques de performance
 
 ## Consignes
 

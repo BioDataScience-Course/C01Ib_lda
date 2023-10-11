@@ -1,6 +1,10 @@
 # Jeu de données QSAR biodegradation
-# 
+#
 # description : https://archive-beta.ics.uci.edu/ml/datasets/qsar+biodegradation
+
+# Note : ce script ne doit pas être réexécuté. C'est le code qui a servi à
+# générer le fichier 'data/biodegradation.rds' qui est présent dans votre dépôt
+# et qui ne doit pas être regénéré !
 
 # Configuration de l'environnement
 SciViews::R(lang = "fr")
@@ -21,7 +25,7 @@ cols <- c(
 )
 
 biodeg <- readr::read_delim(
-  "https://archive.ics.uci.edu/ml/machine-learning-databases/00254/biodeg.csv", 
+  "https://archive.ics.uci.edu/ml/machine-learning-databases/00254/biodeg.csv",
   col_names = cols, delim = ";")
 
 
