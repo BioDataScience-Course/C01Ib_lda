@@ -91,6 +91,7 @@ test_that("Chunk 'skim' & 'skimcomment' : description des données", {
 
 test_that("Chunks 'split' : définition du set d'apprentissage et du set de test", {
   expect_true(is_identical_to_ref("split"))
+  # TODO: problems with this test for some students
   # L'objet 'biodeg_train' n'est pas trouvé ou n'est pas celui attendu.
   # Avez-vous bien respecté la division de 8/10 pour séparer vos deux sets ?
   # Avez-vous exécuté les différents chunks et les instructions dans le bon
@@ -99,6 +100,7 @@ test_that("Chunks 'split' : définition du set d'apprentissage et du set de test
 
 test_that("Chunks 'model' & 'modelcomment' : création du classifieur", {
   expect_true(is_identical_to_ref("model"))
+  # TODO: problems with this test for some students
   # L'objet 'bio_lda' n'est pas trouvé ou n'est pas celui attendu
   # Avez-vous bien entraîné votre classifieur avec les données d'apprentissage ?
 
