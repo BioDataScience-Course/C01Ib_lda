@@ -63,17 +63,19 @@ select_answer(r"-{
 [] -   Le tableau dédié à l'entrainement et au test du classifieur comprend 1055 attributs et 42 items.
 [] -   Le tableau dédié à l'entrainement et au test du classifieur comprend 1055 items et 41 attributs.
 [] -   Le tableau dédié à l'entrainement et au test du classifieur comprend 1055 attributs et 41 items.
-[] -   L'ensemble des variables sont quantitatives.
-[] -   L'ensemble des variables sont qualitatives.
+
+[] -   Toutes les variables sont quantitatives.
+[] -   Toutes les variables sont qualitatives.
 [] -   Une variable est qualitative et les autres quantitatives.
 [] -   Une variable est quantitative et les autres qualitatives.
+
 [] -   On dénombre 356 molécules biodégradables et 699 non biodégradables.
 [] -   On dénombre 699 molécules biodégradables et 356 non biodégradables.
+
 [] -   La majorité des distributions des variables numériques sont unimodales et asymétriques.
 [] -   La majorité des distributions des variables numériques sont unimodales et symétriques.
 [] -   La majorité des distributions des variables numériques sont bimodales et symétriques.
 [] -   La majorité des distributions des variables numériques sont multimodales et symétriques.}-")
-
 ```
 
 ### Set d'apprentissage et de test
@@ -104,9 +106,11 @@ select_answer(r"-{
 [] -   Le classifieur est entrainé sur 2/10 des observations.
 [] -   Le classifieur est entrainé sur 8/10 des observations.
 [] -   Le classifieur est entrainé sur l'ensemble des observations.
+
 [] -   La variable class est prédite sur base des 42 variables numériques du jeu de données.
 [] -   La variable class est prédite sur base des 41 variables numériques du jeu de données.
 [] -   La variable class est prédite sur base des 8/10 variables du jeu de données.
+
 [] -   Les deux classes étudiées sont équilibrées. On retrouve autant de molécules dégradables que non dégradables dans le set d'apprentissage.
 [] -   Les molécules dégradables sont plus abondantes que les molécules non dégradables dans le set d'apprentissage.
 [] -   Les molécules dégradables sont moins abondantes que les molécules non dégradables dans le set d'apprentissage.}-")
@@ -129,19 +133,17 @@ ___
 
 ```{r confusioncomment, output='asis'}
 select_answer(r"-{
-[] -   Le classifieur détecte 55 vrais positifs pour les molécules non dégradables.
-[] -   Le classifieur détecte 55 faux positifs pour les molécules non dégradables.
-[] -   Le classifieur détecte 55 vrais négatifs pour les molécules non dégradables.
-[] -   Le classifieur détecte 55 faux négatifs pour les molécules non dégradables.
-[] -   Le taux d'erreur global est de 10.9% sur 211 items testés.
-[] -   Le taux d'erreur global est de 10.9% sur 843 items testés.
-[] -   Le taux d'erreur global est de 10.9% sur 1055 items testés.
-[] -   Le classifieur est plus précis pour détecter les molécules non dégradables.
-[] -   Le classifieur est plus précis pour détecter les molécules dégradables.
-[] -   Le classifieur est aussi précis dans la détection des molécules dégradables que non dégradables.
-[] -   Le classifieur trouve 81% des molécules dégradables parmi l'ensemble des molécules du set de test.
-[] -   Le classifieur trouve 81% des molécules dégradables parmi l'ensemble des molécules dégradables du set de test.
-[] -   Le classifieur trouve 81% des molécules dégradables parmi l'ensemble des molécules non dégradables du set de test.}-")
+[] -   Le classifieur est entrainé sur 2/10 des observations.
+[] -   Le classifieur est entrainé sur 8/10 des observations.
+[] -   Le classifieur est entrainé sur l'ensemble des observations.
+
+[] -   La variable class est prédite sur base des 42 variables numériques du jeu de données.
+[] -   La variable class est prédite sur base des 41 variables numériques du jeu de données.
+[] -   La variable class est prédite sur base des 8/10 variables du jeu de données.
+
+[] -   Les deux classes étudiées sont équilibrées. On retrouve autant de molécules dégradables que non dégradables dans le set d'apprentissage.
+[] -   Les molécules dégradables sont plus abondantes que les molécules non dégradables dans le set d'apprentissage.
+[] -   Les molécules dégradables sont moins abondantes que les molécules non dégradables dans le set d'apprentissage.}-")
 ```
 
 ## Conclusion
