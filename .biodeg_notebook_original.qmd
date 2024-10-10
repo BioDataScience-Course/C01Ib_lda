@@ -82,7 +82,7 @@ select_answer(r"-{
 
 Nous utilisons les 8/10 des données pour l'apprentissage et 2/10 pour le test.
 
-<!--% Divisez ce jeu de donnée en un set d'apprentissage (`biodeg_learn`) et en un set de test (`biodeg_test`). Utilisez 8/10 des observations pour votre set d'apprentissage.-->
+<!--% Divisez ce jeu de donnée en un set d'apprentissage (`biodeg_train`) et en un set de test (`biodeg_test`). Utilisez 8/10 des observations pour votre set d'apprentissage.-->
 
 ```{r split, record='RODFS', object='biodeg_train'}
 set.seed(347890)
@@ -133,17 +133,22 @@ ___
 
 ```{r confusioncomment, output='asis'}
 select_answer(r"-{
-[] -   Le classifieur est entrainé sur 2/10 des observations.
-[] -   Le classifieur est entrainé sur 8/10 des observations.
-[] -   Le classifieur est entrainé sur l'ensemble des observations.
+[] -   Le classifieur détecte 55 vrais positifs pour les molécules non dégradables.
+[] -   Le classifieur détecte 55 faux positifs pour les molécules non dégradables.
+[] -   Le classifieur détecte 55 vrais négatifs pour les molécules non dégradables.
+[] -   Le classifieur détecte 55 faux négatifs pour les molécules non dégradables.
 
-[] -   La variable class est prédite sur base des 42 variables numériques du jeu de données.
-[] -   La variable class est prédite sur base des 41 variables numériques du jeu de données.
-[] -   La variable class est prédite sur base des 8/10 variables du jeu de données.
+[] -   Le taux d'erreur global est de 10.9% sur 211 items testés.
+[] -   Le taux d'erreur global est de 10.9% sur 843 items testés.
+[] -   Le taux d'erreur global est de 10.9% sur 1055 items testés.
 
-[] -   Les deux classes étudiées sont équilibrées. On retrouve autant de molécules dégradables que non dégradables dans le set d'apprentissage.
-[] -   Les molécules dégradables sont plus abondantes que les molécules non dégradables dans le set d'apprentissage.
-[] -   Les molécules dégradables sont moins abondantes que les molécules non dégradables dans le set d'apprentissage.}-")
+[] -   Le classifieur est plus précis pour détecter les molécules non dégradables.
+[] -   Le classifieur est plus précis pour détecter les molécules dégradables.
+[] -   Le classifieur est aussi précis dans la détection des molécules dégradables que non dégradables.
+
+[] -   Le classifieur trouve 81% des molécules dégradables parmi l'ensemble des molécules du set de test.
+[] -   Le classifieur trouve 81% des molécules dégradables parmi l'ensemble des molécules dégradables du set de test.
+[] -   Le classifieur trouve 81% des molécules dégradables parmi l'ensemble des molécules non dégradables du set de test.}-")
 ```
 
 ## Conclusion
