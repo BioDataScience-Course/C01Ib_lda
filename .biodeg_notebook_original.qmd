@@ -28,14 +28,17 @@ Dans le cadre de ce projet, un classifieur basé sur l'analyse discriminante lin
 
 Les données sont rendues disponibles sous licence CC BY 4.0 via UC Irvine Machine Learning Repository [@kamelmansouri2013] qui fournit les données et les métadonnées. Ces données ont été employées dans le cadre de la recherche de @mansouri2013 .
 
-L'analyse est réalisée avec la [SciViews Box 2023](https://www.sciviews.org/software/svbox/) dans [Saturn Cloud](https://saturncloud.io) (Linux) avec le [logiciel R](https://www.r-project.org) (`r R.version.string`).
+L'analyse est réalisée avec le logiciel R (`r R.version.string`) et en particulier le package {mlearning} version `r packageVersion("mlearning")` avec la [SciViews Box 2025](https://www.sciviews.org/software/svbox/) dans [Saturn Cloud](https://saturncloud.io/) (Linux Ubuntu 22.04).
 
 ## Analyses
 
 ```{r setup, include=FALSE}
-# Nécessaire pour les tests SDD, ne pas utiliser dans un "vrai" projet
+# Ceci est nécessaire pour les tests SDD, ne pas utiliser dans un "vrai" projet
 if (!"tools:tests" %in% search())
   source(here::here("tests/tools_tests.R"), attach(NULL, name = "tools:tests"))
+
+# Configure Knitr to use AGG as graphic device
+knitr::opts_chunk$set(dev = "ragg_png")
 
 # Configuration de l'environnement
 SciViews::R("ml", lang = "fr")
@@ -82,7 +85,7 @@ select_answer(r"-{
 
 Nous utilisons les 8/10 des données pour l'apprentissage et 2/10 pour le test.
 
-<!--% Divisez ce jeu de donnée en un set d'apprentissage (`biodeg_train`) et en un set de test (`biodeg_test`). Utilisez 8/10 des observations pour votre set d'apprentissage.-->
+<!--% Divisez ce jeu de donnée en un set d'apprentissage (`biodeg_train`) et en un set de test (`biodeg_test`). Utilisez 8/10 des observations pour votre set d'apprentissage. N'utilisez pas d'autres arguments pour la fonction initial_split().-->
 
 ```{r split, record='RODFS', object='biodeg_train'}
 set.seed(347890)

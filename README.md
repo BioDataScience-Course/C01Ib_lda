@@ -1,16 +1,14 @@
 # SDD III module 1 : Discrimination de molécules biodégradables
 
-Ce projet nécessite d'avoir assimilé l'ensemble des notions du premier module du cours de science des données biologiques 3. Il correspond au dépôt GitHub <https://github.com/BioDataScience-Course/C01Ib_lda>
-
+Ce projet nécessite d'avoir assimilé l'ensemble des notions du premier module du cours de science des données biologiques 3. Il correspond au dépôt GitHub <https://github.com/BioDataScience-Course/C01Ib_lda> et est distribué sous licence [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 ## Objectifs
 
-Ce projet est individuel **court** et **cadré**. Vous devrez :
+Ce projet est individuel, **court** et **cadré**. Vous devrez :
 
 -   créer un classifieur
 -   tester ce classifieur
 -   utiliser les métriques de performance
-
 
 ## Consignes
 
@@ -21,7 +19,6 @@ Ce projet est individuel **court** et **cadré**. Vous devrez :
 -   Utilisez les outils de vérification mis à votre disposition (onglet 'Construire' -\> bouton 'Construire tout') **toujours après avoir refait un rendu du document** sinon, les informations présentées dans les tests ne seront pas à jour.
 
 -   Enfin, vérifiez que votre dernier commit + push est bien enregistré sur GitHub à la fin de l'exercice.
-
 
 ## Information sur les données
 
