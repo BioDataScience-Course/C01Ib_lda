@@ -1,6 +1,6 @@
 # SDD III module 1 : Discrimination de molécules biodégradables
 
-Ce projet nécessite d'avoir assimilé l'ensemble des notions du premier module du cours de science des données biologiques 3. Il correspond au dépôt GitHub <https://github.com/BioDataScience-Course/C01Ib_lda> et est distribué sous licence [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
+Ce projet nécessite d'avoir assimilé l'ensemble des notions du premier module du cours de science des données biologiques III. Il correspond au dépôt GitHub <https://github.com/BioDataScience-Course/C01Ib_lda> et est distribué sous licence [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 
 ## Objectifs
 
