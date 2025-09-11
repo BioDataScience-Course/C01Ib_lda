@@ -17,3 +17,5 @@ StripTrailingWhitespace: Yes
 
 BuildType: Makefile
 MakefilePath: tests
+
+SpellingDictionary: fr_FR
