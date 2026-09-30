@@ -9,6 +9,8 @@ format:
     toc: true
 editor: visual
 lang: fr
+svbox: 2026
+vm: "Ubuntu 24.04.3 LTS"
 bibliography: references.bib
 ---
 
@@ -26,23 +28,33 @@ Dans le cadre de ce projet, un classifieur basé sur l'analyse discriminante lin
 
 ## Matériel et méthodes
 
-Les données sont rendues disponibles sous licence CC BY 4.0 via UC Irvine Machine Learning Repository [@kamelmansouri2013] qui fournit les données et les métadonnées. Ces données ont été employées dans le cadre de la recherche de @mansouri2013 .
-
-L'analyse est réalisée avec le logiciel R (`r R.version.string`) et en particulier le package {mlearning} version `r packageVersion("mlearning")` avec la [SciViews Box 2025](https://www.sciviews.org/software/svbox/) dans [Saturn Cloud](https://saturncloud.io/) (Linux Ubuntu 22.04).
-
-## Analyses
-
 ```{r setup, include=FALSE}
 # Ceci est nécessaire pour les tests SDD, ne pas utiliser dans un "vrai" projet
 if (!"tools:tests" %in% search())
   source(here::here("tests/tools_tests.R"), attach(NULL, name = "tools:tests"))
 
-# Configure Knitr to use AGG as graphic device
+# Configurez Knitr pour utiliser AGG comme périphérique graphique
 knitr::opts_chunk$set(dev = "ragg_png")
 
-# Configuration de l'environnement
+# Configuration de l'environnement SciViews::R
 SciViews::R("ml", lang = "fr")
 ```
+
+Les données sont rendues disponibles sous licence CC BY 4.0 via UC Irvine Machine Learning Repository [@kamelmansouri2013] qui fournit les données et les métadonnées. Ces données ont été employées dans le cadre de la recherche de @mansouri2013 .
+
+L'analyse est réalisée avec le logiciel R (`r R.version.string`) et en particulier le package {mlearning} version `r packageVersion("mlearning")` avec la [SciViews Box `r rmarkdown::metadata$svbox`](https://www.sciviews.org/software/svbox/) dans [Saturn Cloud](https://saturncloud.io/) (`r rmarkdown::metadata$vm`).
+
+<!--% Spécifier si vous avez employé l'intelligence artificielle dans votre projet. -->
+
+```{r ai_comment, output='asis'}
+select_answer(r"-{
+[] -   Ce document a été rédigé en étant assisté par l'Intelligence Artificielle.
+[] -   Ce document a été rédigé sans recours à l'Intelligence Artificielle.}-")
+```
+
+<!-- Précisez ci-dessous l'utilisation que vous avez faite de l'IA. Citez le modèle utilisé. -->
+
+## Analyses
 
 <!--% Importez les données `biodegradation.rds` présentes dans le dossier `data`. Assurez-vous que chaque variable soit dans un format correct. -->
 
@@ -156,12 +168,22 @@ select_answer(r"-{
 
 ## Conclusion
 
-<!--% Conseilleriez-vous l'utilisation de ce classifieur. Indiquez trois éléments en faveur ou non de ce classifieur. -->
+<!--% Évaluez l'intérêt et les limites du classifieur en cochant les phrases correctes. -->
 
--   ...
+```{r conclusioncomment, output='asis'}
+select_answer(r"-{
+[] -   Globalement, le classifieur offre des performances globales acceptables pour la prédiction de la biodégradabilité.
+[] -   Le classifieur est totalement inutilisable car son taux d'erreur global est équivalent à un tirage aléatoire.
+[] -   Le classifieur présente un surajustement (overfitting) massif qui empêche toute généralisation.
 
--   ...
+[] -   Les erreurs de classification restent bien balancées entre les deux classes.
+[] -   Le classifieur présente un biais majeur en classant systématiquement toutes les molécules comme non biodégradables.
+[] -   Les erreurs sont exclusivement concentrées sur la classe des molécules biodégradables.
 
--   ...
+[] -   Le rappel et la précision sont plus élevés pour les molécules non biodégradables que pour les molécules biodégradables.
+[] -   Le rappel et la précision sont plus élevés pour les molécules biodégradables que pour les molécules non biodégradables.
+[] -   La précision et le rappel sont rigoureusement identiques pour les deux classes.
+}-")
+```
 
 ## Bibliographie

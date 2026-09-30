@@ -1,6 +1,6 @@
 Package: C01Ib_lda
 Type: Package
-Version: 3.1.0
+Version: 3.2.0
 Title: Discrimination de molécules biodégradables
 Description: Projet individuel cadré du module 1 du cours SDD III à l'UMONS
 Authors@R: c(
@@ -11,8 +11,8 @@ Authors@R: c(
     email = "phgrosjean@sciviews.org",
     comment = c(ORCID = "0000-0002-2694-9471"))
   )
-Depends: R (>= 4.4.0)
-SystemRequirements: SciViews Box 2025 (https://www.sciviews.org/software/svbox/)
+Depends: R (>= 4.5.0)
+SystemRequirements: SciViews Box 2026 (https://www.sciviews.org/software/svbox/)
 License: CC BY-NC-SA 4.0
 URL: https://github.com/BioDataScience-Course/C01Ib_lda
 BugReports: https://github.com/BioDataScience-Course/C01Ib_lda/issues

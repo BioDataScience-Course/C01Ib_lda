@@ -1,6 +1,6 @@
 # Vérifications de biodeg_notebook.qmd
-biodeg <- parse_rmd("../../biodeg_notebook.qmd",
-  allow_incomplete = TRUE, parse_yaml = TRUE)
+biodeg  <- try(parsermd::parse_qmd("../../biodeg_notebook.qmd"))
+expect_true(TRUE, info = mice )
 
 test_that("Le bloc-notes est-il compilé en un fichier final HTML ?", {
   expect_true(is_rendered("biodeg_notebook.qmd"))
@@ -33,7 +33,7 @@ test_that("La structure du document est-elle conservée ?", {
   # README.md).
 
   expect_true(all(c("setup", "import", "skim", "skimcomment", "split",
-    "model", "modelcomment", "confusion", "confusioncomment")
+    "model", "modelcomment", "confusion", "confusioncomment", "conclusioncomment")
     %in% rmd_node_label(biodeg)))
   # Un ou plusieurs labels de chunks nécessaires à l'évaluation manquent
   # Ce test échoue si vous avez modifié la structure du document, un ou
@@ -51,20 +51,21 @@ test_that("La structure du document est-elle conservée ?", {
 })
 
 test_that("L'entête YAML a-t-il été complété ?", {
-  expect_true(biodeg[[1]]$author != "___")
-  expect_true(!grepl("__", biodeg[[1]]$author))
-  expect_true(grepl("^[^_]....+", biodeg[[1]]$author))
+  authors <- biodeg[[1]]@yaml[["author"]]
+  expect_true(authors != "___")
+  expect_true(!grepl("__", authors))
+  expect_true(grepl("^[^_]....+", authors))
   # Le nom d'auteur n'est pas complété ou de manière incorrecte dans l'entête
   # Vous devez indiquer votre nom dans l'entête YAML à la place de "___" et
   # éliminer les caractères '_' par la même occasion.
 
-  expect_true(grepl("[a-z]", biodeg[[1]]$author))
+  expect_true(grepl("[a-z]", authors))
   # Aucune lettre minuscule n'est trouvée dans le nom d'auteur
   # Avez-vous bien complété le champ 'author' dans l'entête YAML ?
   # Vous ne pouvez pas écrire votre nom tout en majuscules. Utilisez une
   # majuscule en début de nom et de prénom, et des minuscules ensuite.
 
-  expect_true(grepl("[A-Z]", biodeg[[1]]$author))
+  expect_true(grepl("[A-Z]", authors))
   # Aucune lettre majuscule n'est trouvée dans le nom d'auteur
   # Avez-vous bien complété le champ 'author' dans l'entête YAML ?
   # Vous ne pouvez pas écrire votre nom tout en minuscules. Utilisez une
@@ -128,12 +129,13 @@ test_that("Chunks 'confusion' & 'confusioncomment' : matrice de confusion et mé
   # cette aide plus tard dans le travail de groupe ou les interrogations !
 })
 
-test_that("La conclusion est-elle complétée ?", {
-  expect_true(!(rmd_select(biodeg, by_section(
-    "Conclusion")) |> as_document() |> grepl(
-      "^- +\\.+ *$", x = _) |> any()))
-  # La conclusion relative à la validité du classifieur que vous avez créée ne
-  # semble pas présente.
-  # Vous devez remplacer les trois points (...) pas vos éléments en faveur ou
-  # contre ce classifieur, selon que vous considérez qu'il est valide ou non.
+test_that("Chunk 'conclusioncomment' : conclusion du projet", {
+  expect_true(is_identical_to_ref("conclusioncomment"))
+  # La conclusion relative à la validité du classifieur est est (partiellement)
+  # fausse.
+  # Vous devez cochez les phrases d'un 'x' entre les crochets [] -> [x].
+  # Ensuite, vous devez recompiler la version HTML du bloc-notes (bouton 'Rendu')
+  # sans erreur pour réactualiser les résultats.
+  # Assurez-vous de bien comprendre ce qui est coché ou pas : vous n'aurez plus
+  # cette aide plus tard dans le travail de groupe ou les interrogations !
 })
